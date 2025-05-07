@@ -1,37 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Financial Management System</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    // Simulate authentication check
+    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+
+    // Redirect based on authentication status
+    if (isAuthenticated) {
+      window.location.href = 'homepage.html'; // Redirect to the homepage
+    } else {
+      window.location.href = 'login.html'; // Redirect to the login page
+    }
+  </script>
 </head>
 <body>
-    <h1>Financial Management System</h1>
-    <div id="app">
-        <section id="income">
-            <h2>Income</h2>
-            <form id="income-form">
-                <input type="text" placeholder="Source" required>
-                <input type="number" placeholder="Amount" required>
-                <button type="submit">Add Income</button>
-            </form>
-            <ul id="income-list"></ul>
-        </section>
-        <section id="expenses">
-            <h2>Expenses</h2>
-            <form id="expense-form">
-                <input type="text" placeholder="Category" required>
-                <input type="number" placeholder="Amount" required>
-                <button type="submit">Add Expense</button>
-            </form>
-            <ul id="expense-list"></ul>
-        </section>
-        <section id="summary">
-            <h2>Summary</h2>
-            <p>Total Income: <span id="total-income">0</span></p>
-            <p>Total Expenses: <span id="total-expenses">0</span></p>
-            <p>Balance: <span id="balance">0</span></p>
-        </section>
-    </div>
-    <script src="js/app.js"></script>
+  <p>Redirecting...</p>
 </body>
 </html>

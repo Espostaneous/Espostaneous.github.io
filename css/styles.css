@@ -1,0 +1,92 @@
+/* filepath: c:\Users\Lloyd Philip\Documents\School\NBSC Codings\Espostaneous.github.io\css\styles.css */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9fafb;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+#app {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+:where([class^="ri-"])::before {
+    content: "\f3c2";
+}
+
+.flex {
+    display: flex;
+}
+
+.h-screen {
+    height: 100vh;
+}
+
+.w-64 {
+    width: 16rem;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.border-r {
+    border-right: 1px solid #e5e7eb;
+}
+
+.border-gray-200 {
+    border-color: #e5e7eb;
+}
+
+.text-primary {
+    color: #0F766E;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.font-pacifico {
+    font-family: 'Pacifico', cursive;
+}

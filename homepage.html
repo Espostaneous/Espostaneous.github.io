@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Management System</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0F766E',secondary:'#14B8A6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/homepage.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+}
+</style>
+</head>
+<body>
+<div class="flex h-screen">
+  <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+    <div class="p-4 border-b border-gray-200">
+      <div class="text-xl font-['Pacifico'] text-primary">logo</div>
+    </div>
+    <nav class="flex-1 p-4">
+      <div class="space-y-1">
+        <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-white bg-primary !rounded-button">
+          <i class="ri-dashboard-line mr-2 w-5 h-5 flex items-center justify-center"></i>
+          Dashboard
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 !rounded-button">
+          <i class="ri-wallet-3-line mr-2 w-5 h-5 flex items-center justify-center"></i>
+          Accounts
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 !rounded-button">
+          <i class="ri-exchange-funds-line mr-2 w-5 h-5 flex items-center justify-center"></i>
+          Transactions
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 !rounded-button">
+          <i class="ri-pie-chart-line mr-2 w-5 h-5 flex items-center justify-center"></i>
+          Analytics
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 !rounded-button">
+          <i class="ri-bill-line mr-2 w-5 h-5 flex items-center justify-center"></i>
+          Bills
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 !rounded-button">
+          <i class="ri-funds-line mr-2 w-5 h-5 flex items-center justify-center"></i>
+          Investments
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 !rounded-button">
+          <i class="ri-bank-card-line mr-2 w-5 h-5 flex items-center justify-center"></i>
+          Cards
+        </a>
+      </div>
+    </nav>
+    <div class="p-4 border-t border-gray-200">
+      <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 !rounded-button">
+        <i class="ri-settings-3-line mr-2 w-5 h-5 flex items-center justify-center"></i>
+        Settings
+      </a>
+    </div>
+  </aside>
+  <main class="flex-1 flex flex-col overflow-hidden">
+    <header class="bg-white border-b border-gray-200">
+      <div class="flex items-center justify-between px-6 py-4">
+        <div class="flex items-center">
+          <button class="text-gray-600 hover:text-gray-900">
+            <i class="ri-menu-line text-xl"></i>
+          </button>
+          <div class="ml-6">
+            <h1 class="text-lg font-semibold text-gray-900">Dashboard</h1>
+            <p class="text-sm text-gray-500">Overview of your finances</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button class="p-2 text-gray-600 hover:text-gray-900 !rounded-button">
+            <i class="ri-notification-3-line text-xl"></i>
+          </button>
+          <div class="relative">
+            <button id="user-menu-button" class="flex items-center space-x-2 p-2 hover:bg-gray-50 !rounded-button">
+              <div class="w-8 h-8 bg-primary text-white !rounded-button flex items-center justify-center">
+                <span class="text-sm font-medium">U</span>
+              </div>
+              <span class="text-sm font-medium text-gray-700">User</span>
+            </button>
+            <div id="user-menu" class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg">
+              <a href="#" id="account-settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Account Settings</a>
+              <button id="logout-button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Log Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="flex-1 overflow-auto p-6">
+      <div class="grid grid-cols-4 gap-6 mb-6">
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-primary/10 !rounded-button flex items-center justify-center">
+              <i class="ri-wallet-3-line text-xl text-primary"></i>
+            </div>
+            <div class="flex items-center text-green-500 text-sm font-medium">
+              <i class="ri-arrow-up-line mr-1"></i>
+              2.5%
+            </div>
+          </div>
+          <h3 class="text-sm font-medium text-gray-500">Total Balance</h3>
+          <p class="text-2xl font-semibold text-gray-900">$24,563.00</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-green-100 !rounded-button flex items-center justify-center">
+              <i class="ri-arrow-up-circle-line text-xl text-green-600"></i>
+            </div>
+            <div class="flex items-center text-green-500 text-sm font-medium">
+              <i class="ri-arrow-up-line mr-1"></i>
+              4.3%
+            </div>
+          </div>
+          <h3 class="text-sm font-medium text-gray-500">Income</h3>
+          <p class="text-2xl font-semibold text-gray-900">$8,350.00</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-red-100 !rounded-button flex items-center justify-center">
+              <i class="ri-arrow-down-circle-line text-xl text-red-600"></i>
+            </div>
+            <div class="flex items-center text-red-500 text-sm font-medium">
+              <i class="ri-arrow-down-line mr-1"></i>
+              1.8%
+            </div>
+          </div>
+          <h3 class="text-sm font-medium text-gray-500">Expenses</h3>
+          <p class="text-2xl font-semibold text-gray-900">$3,850.00</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-blue-100 !rounded-button flex items-center justify-center">
+              <i class="ri-funds-line text-xl text-blue-600"></i>
+            </div>
+            <div class="flex items-center text-green-500 text-sm font-medium">
+              <i class="ri-arrow-up-line mr-1"></i>
+              3.1%
+            </div>
+          </div>
+          <h3 class="text-sm font-medium text-gray-500">Investments</h3>
+          <p class="text-2xl font-semibold text-gray-900">$12,360.00</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-6 mb-6">
+        <div class="col-span-2 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-semibold text-gray-900">Income vs Expenses</h2>
+            <div class="flex items-center space-x-2">
+              <button class="px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-100 !rounded-button">Week</button>
+              <button class="px-3 py-1.5 text-sm font-medium text-white bg-primary !rounded-button">Month</button>
+              <button class="px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-100 !rounded-button">Year</button>
+            </div>
+          </div>
+          <div id="incomeExpensesChart" class="w-full h-[300px]"></div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-semibold text-gray-900">Expense Categories</h2>
+            <button class="text-sm text-gray-500 hover:text-gray-700">
+              <i class="ri-more-2-fill"></i>
+            </button>
+          </div>
+          <div id="expenseCategoriesChart" class="w-full h-[300px]"></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-sm border border-gray-100">
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-gray-900">Recent Transactions</h2>
+            <button class="text-sm font-medium text-primary hover:text-primary/90">View All</button>
+          </div>
+        </div>
+        <div class="divide-y divide-gray-200">
+          <div class="flex items-center justify-between p-6">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 bg-blue-100 !rounded-button flex items-center justify-center">
+                <i class="ri-shopping-bag-line text-blue-600"></i>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-900">Online Shopping</p>
+                <p class="text-sm text-gray-500">May 7, 2025 at 8:45 PM</p>
+              </div>
+            </div>
+            <p class="text-sm font-medium text-red-500">-$84.50</p>
+          </div>
+          <div class="flex items-center justify-between p-6">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 bg-green-100 !rounded-button flex items-center justify-center">
+                <i class="ri-bank-line text-green-600"></i>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-900">Salary Deposit</p>
+                <p class="text-sm text-gray-500">May 7, 2025 at 6:00 AM</p>
+              </div>
+            </div>
+            <p class="text-sm font-medium text-green-500">+$4,250.00</p>
+          </div>
+          <div class="flex items-center justify-between p-6">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 bg-purple-100 !rounded-button flex items-center justify-center">
+                <i class="ri-restaurant-line text-purple-600"></i>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-900">Restaurant</p>
+                <p class="text-sm text-gray-500">May 6, 2025 at 7:30 PM</p>
+              </div>
+            </div>
+            <p class="text-sm font-medium text-red-500">-$65.20</p>
+          </div>
+          <div class="flex items-center justify-between p-6">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 bg-yellow-100 !rounded-button flex items-center justify-center">
+                <i class="ri-taxi-line text-yellow-600"></i>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-900">Transportation</p>
+                <p class="text-sm text-gray-500">May 6, 2025 at 2:15 PM</p>
+              </div>
+            </div>
+            <p class="text-sm font-medium text-red-500">-$22.50</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const incomeExpensesChart = echarts.init(document.getElementById('incomeExpensesChart'));
+  const expenseCategoriesChart = echarts.init(document.getElementById('expenseCategoriesChart'));
+  const incomeExpensesOption = {
+    animation: false,
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(255, 255, 255, 0.9)',
+      borderColor: '#e5e7eb',
+      borderWidth: 1,
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    legend: {
+      data: ['Income', 'Expenses'],
+      bottom: 0
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '15%',
+      top: '3%',
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+      axisLine: {
+        lineStyle: {
+          color: '#e5e7eb'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937'
+      }
+    },
+    yAxis: {
+      type: 'value',
+      axisLine: {
+        lineStyle: {
+          color: '#e5e7eb'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937',
+        formatter: '${value}'
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#f3f4f6'
+        }
+      }
+    },
+    series: [
+      {
+        name: 'Income',
+        type: 'line',
+        smooth: true,
+        data: [2100, 1900, 2300, 2050],
+        lineStyle: {
+          color: 'rgba(87, 181, 231, 1)'
+        },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: 'rgba(87, 181, 231, 0.1)'
+            },
+            {
+              offset: 1,
+              color: 'rgba(87, 181, 231, 0)'
+            }
+          ])
+        },
+        symbol: 'none'
+      },
+      {
+        name: 'Expenses',
+        type: 'line',
+        smooth: true,
+        data: [1200, 950, 1400, 1300],
+        lineStyle: {
+          color: 'rgba(252, 141, 98, 1)'
+        },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: 'rgba(252, 141, 98, 0.1)'
+            },
+            {
+              offset: 1,
+              color: 'rgba(252, 141, 98, 0)'
+            }
+          ])
+        },
+        symbol: 'none'
+      }
+    ]
+  };
+  const expenseCategoriesOption = {
+    animation: false,
+    tooltip: {
+      trigger: 'item',
+      backgroundColor: 'rgba(255, 255, 255, 0.9)',
+      borderColor: '#e5e7eb',
+      borderWidth: 1,
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    legend: {
+      orient: 'vertical',
+      right: '5%',
+      top: 'center',
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    series: [
+      {
+        type: 'pie',
+        radius: ['40%', '70%'],
+        center: ['40%', '50%'],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderRadius: 4
+        },
+        label: {
+          show: false
+        },
+        emphasis: {
+          label: {
+            show: false
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data: [
+          { value: 35, name: 'Housing', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+          { value: 25, name: 'Food', itemStyle: { color: 'rgba(141, 211, 199, 1)' } },
+          { value: 20, name: 'Transportation', itemStyle: { color: 'rgba(251, 191, 114, 1)' } },
+          { value: 20, name: 'Entertainment', itemStyle: { color: 'rgba(252, 141, 98, 1)' } }
+        ]
+      }
+    ]
+  };
+  incomeExpensesChart.setOption(incomeExpensesOption);
+  expenseCategoriesChart.setOption(expenseCategoriesOption);
+  window.addEventListener('resize', function() {
+    incomeExpensesChart.resize();
+    expenseCategoriesChart.resize();
+  });
+});
+</script>
+</body>
+</html>
