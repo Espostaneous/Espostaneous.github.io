@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
 <link rel="stylesheet" href="css/styles.css">
+<script src="js/homepage.js"></script>
 <style>
 :where([class^="ri-"])::before { content: "\f3c2"; }
 body {
@@ -81,12 +82,18 @@ body {
           <button class="p-2 text-gray-600 hover:text-gray-900 !rounded-button">
             <i class="ri-notification-3-line text-xl"></i>
           </button>
-          <button class="flex items-center space-x-2 p-2 hover:bg-gray-50 !rounded-button">
-            <div class="w-8 h-8 bg-primary text-white !rounded-button flex items-center justify-center">
-              <span class="text-sm font-medium">JD</span>
+          <div class="relative">
+            <button id="user-menu-button" class="flex items-center space-x-2 p-2 hover:bg-gray-50 !rounded-button">
+              <div class="w-8 h-8 bg-primary text-white !rounded-button flex items-center justify-center">
+                <span class="text-sm font-medium">U</span>
+              </div>
+              <span class="text-sm font-medium text-gray-700">User</span>
+            </button>
+            <div id="user-menu" class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg">
+              <a href="#" id="account-settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Account Settings</a>
+              <button id="logout-button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Log Out</button>
             </div>
-            <span class="text-sm font-medium text-gray-700">John Doe</span>
-          </button>
+          </div>
         </div>
       </div>
     </header>
