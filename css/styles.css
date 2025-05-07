@@ -1,9 +1,9 @@
 /* filepath: c:\Users\Lloyd Philip\Documents\School\NBSC Codings\Espostaneous.github.io\css\styles.css */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f9fafb;
 }
 
 h1, h2 {
@@ -48,4 +48,45 @@ ul {
 
 li {
     margin: 5px 0;
+}
+
+:where([class^="ri-"])::before {
+    content: "\f3c2";
+}
+
+.flex {
+    display: flex;
+}
+
+.h-screen {
+    height: 100vh;
+}
+
+.w-64 {
+    width: 16rem;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.border-r {
+    border-right: 1px solid #e5e7eb;
+}
+
+.border-gray-200 {
+    border-color: #e5e7eb;
+}
+
+.text-primary {
+    color: #0F766E;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.font-['Pacifico'] {
+    font-family: 'Pacifico', cursive;
 }
