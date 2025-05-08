@@ -4,19 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting...</title>
-  <script>
-    // Simulate authentication check
-    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-
-    // Redirect based on authentication status
-    if (isAuthenticated) {
-      window.location.href = 'homepage.html'; // Redirect to the homepage
-    } else {
-      window.location.href = 'login.html'; // Redirect to the login page
-    }
-  </script>
+  <script src="js/auth.js"></script>
 </head>
 <body>
   <p>Redirecting...</p>
+  <script>
+    checkAuth();
+  </script>
 </body>
 </html>

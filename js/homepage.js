@@ -20,4 +20,21 @@ document.addEventListener('DOMContentLoaded', function () {
       userMenu.classList.add('hidden');
     }
   });
+
+  // Make sidebar buttons functional
+  document.querySelectorAll('aside nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const page = this.getAttribute('href').substring(1); // Remove the '#' to get the page name
+      if (page) {
+        window.location.href = page + '.html'; // Navigate to the corresponding page
+      }
+    });
+  });
+
+  // Make settings button functional
+  document.querySelector('aside div a[href="settings.html"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.location.href = 'settings.html'; // Navigate to the settings page
+  });
 });

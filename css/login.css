@@ -1,3 +1,5 @@
+/* Removed utility classes that were moved to styles.css */
+/* Remaining page-specific styles */
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
